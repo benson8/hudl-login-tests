@@ -9,7 +9,7 @@ const HelpPage = require("../pages/HelpPage.js");
 const LoginOrganizationPage = require("../pages/LoginOrganizationPage");
 const Chance = require("chance");
 
-describe("Describe", function () {
+describe("Hudl Log In Tests", function () {
   this.timeout(20000);
   const loginUrl = "https://www.hudl.com/login";
 
