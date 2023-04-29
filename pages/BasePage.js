@@ -12,18 +12,31 @@ require("dotenv").config();
  * is not up to par currently, but should be revisited in the future.
  */
 const browser = process.env.BROWSER;
+const mobileWeb = process.env.MOBILE_WEB;
+const headless = process.env.HEADLESS;
+
 let driver;
-if (process.env.MOBILE_WEB === "true") {
+if (mobileWeb === "true") {
+  const options = new chrome.Options().setMobileEmulation({
+    deviceName: "Pixel 5",
+  });
+  if (headless === "true") {
+    options.headless();
+  }
   driver = new webdriver.Builder()
     .forBrowser(browser)
-    .setChromeOptions(
-      new chrome.Options().setMobileEmulation({
-        deviceName: "Pixel 2",
-      })
-    )
+    .setChromeOptions(options)
     .build();
 } else {
-  driver = new webdriver.Builder().forBrowser(browser).build();
+  if (headless === "true" && browser === "chrome") {
+    const options = new chrome.Options().headless();
+    driver = new webdriver.Builder()
+      .forBrowser(browser)
+      .setChromeOptions(options)
+      .build();
+  } else {
+    driver = new webdriver.Builder().forBrowser(browser).build();
+  }
 }
 
 driver.manage().setTimeouts({ implicit: 10000 });
