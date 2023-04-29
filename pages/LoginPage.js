@@ -14,9 +14,6 @@ class LoginPage extends BasePage {
    * @param {string} password Password to enter for logging in
    */
   async enterLogIn(email, password) {
-    let emailField = "input[data-qa-id=email-input]";
-    let passwordField = "input[data-qa-id=password-input]";
-
     await this.enterEmailAddress(email);
     await this.enterPassword(password);
     await this.clickLogInButton();
