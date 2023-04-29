@@ -17,8 +17,8 @@ class LoginPage extends BasePage {
     let emailField = "input[data-qa-id=email-input]";
     let passwordField = "input[data-qa-id=password-input]";
 
-    await this.enterText(emailField, email, "css");
-    await this.enterText(passwordField, password, "css");
+    await this.enterEmailAddress(email);
+    await this.enterPassword(password);
     await this.clickLogInButton();
   }
 
@@ -35,6 +35,18 @@ class LoginPage extends BasePage {
     const logInButton = "logIn";
 
     await this.click(logInButton, "id");
+  }
+
+  async enterEmailAddress(email) {
+    let emailField = "input[data-qa-id=email-input]";
+
+    await this.enterText(emailField, email, "css");
+  }
+
+  async enterPassword(password) {
+    let passwordField = "input[data-qa-id=password-input]";
+
+    await this.enterText(passwordField, password, "css");
   }
 
   async errorDisplays() {

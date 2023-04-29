@@ -79,6 +79,32 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
+  it("Hudl Log In Page - No Email Displays Error Message", async function () {
+    await LoginPage.enterUrl(loginUrl);
+    await LoginPage.enterPassword(process.env.VALID_PASSWORD);
+    await LoginPage.clickLogInButton();
+    await LoginPage.errorDisplays();
+    let errorMessageExists = await LoginPage.errorDisplays();
+    assert.equal(
+      errorMessageExists,
+      true,
+      "Error message did not exist after an invalid log in attempt with no email entered"
+    );
+  });
+
+  it("Hudl Log In Page - No Email Displays Error Message", async function () {
+    await LoginPage.enterUrl(loginUrl);
+    await LoginPage.enterEmailAddress(process.env.VALID_USERNAME);
+    await LoginPage.clickLogInButton();
+    await LoginPage.errorDisplays();
+    let errorMessageExists = await LoginPage.errorDisplays();
+    assert.equal(
+      errorMessageExists,
+      true,
+      "Error message did not exist after an invalid log in attempt with no password entered"
+    );
+  });
+
   it("Hudl Log In Page - Valid Credentials Happy Path", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.enterLogIn(
