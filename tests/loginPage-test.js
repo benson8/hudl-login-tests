@@ -92,7 +92,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - No Email Displays Error Message", async function () {
+  it("Hudl Log In Page - No Password Displays Error Message", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.enterEmailAddress(process.env.VALID_USERNAME);
     await LoginPage.clickLogInButton();
