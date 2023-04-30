@@ -15,7 +15,7 @@ describe("Hudl Log In Tests", function () {
 
   beforeEach(function () {});
 
-  it("Hudl Log In Page - Need Help Link", async function () {
+  it("Hudl Log In Page - Validate Need Help Link", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.clickNeedHelpLink();
     let helpPageExists = await HelpPage.resetPasswordHeadlineExists();
@@ -26,7 +26,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - Sign up Button", async function () {
+  it("Hudl Log In Page - Validate Sign up Button", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.clickSignUpButton();
     let signUpPageExists = await SignUpPage.registerDemoLinkExists();
@@ -37,7 +37,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - Log In with an Organization Page Link", async function () {
+  it("Hudl Log In Page - Validate Log In with an Organization Page Link", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.clickLogInWithOrgranizationButton();
     let loginOrganizationPageExists =
@@ -49,7 +49,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - Invalid Random Credentials Displays Error Message", async function () {
+  it("Hudl Log In Page - Entering Invalid Random Credentials Displays Error Message", async function () {
     let chance = new Chance();
     let randomEmail = chance.email();
     let randomPassword = chance.string();
@@ -67,7 +67,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - No Credentials Displays Error Message", async function () {
+  it("Hudl Log In Page - No Credentials Entered Displays Error Message", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.clickLogInButton();
     await LoginPage.errorDisplays();
@@ -79,7 +79,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - No Email Displays Error Message", async function () {
+  it("Hudl Log In Page - No Email Entered Displays Error Message", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.enterPassword(process.env.VALID_PASSWORD);
     await LoginPage.clickLogInButton();
@@ -92,7 +92,7 @@ describe("Hudl Log In Tests", function () {
     );
   });
 
-  it("Hudl Log In Page - No Password Displays Error Message", async function () {
+  it("Hudl Log In Page - No Password Entered Displays Error Message", async function () {
     await LoginPage.enterUrl(loginUrl);
     await LoginPage.enterEmailAddress(process.env.VALID_USERNAME);
     await LoginPage.clickLogInButton();
