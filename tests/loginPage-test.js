@@ -5,7 +5,7 @@ const assert = require("assert");
 const LoginPage = require("../pages/LoginPage");
 const HomePage = require("../pages/HomePage");
 const SignUpPage = require("../pages/SignUpPage");
-const HelpPage = require("../pages/HelpPage.js");
+const HelpPage = require("../pages/HelpPage");
 const LoginOrganizationPage = require("../pages/LoginOrganizationPage");
 const Chance = require("chance");
 
