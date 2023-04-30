@@ -1,6 +1,6 @@
 # hudl-login-tests
 
-A suite of browser tests for the [Hudl Log In Page](https://www.hudl.com/login), utilizing [**_Node.js_**](https://nodejs.org/en), [**_Mocha_**](https://mochajs.org/), and [**_Selenium Webdriver_**](https://www.selenium.dev/documentation/webdriver/).
+A suite of browser tests for the [Hudl Log In Page](https://www.hudl.com/login), utilizing [**_Node.js_**](https://nodejs.org/en), [**_Mocha_**](https://mochajs.org/), and [**_Selenium WebDriver_**](https://www.selenium.dev/documentation/webdriver/).
 
 ## MacOs Prerequisites
 
@@ -18,13 +18,11 @@ Installing [Git for Windows](https://gitforwindows.org/) will also get you a Bas
 
 ## Test Suite Initilization and Credentials
 
-From the base directory of hudl-login-tests, run the following command:
+From the base directory of hudl-login-tests, run the following command to install all necessary dependencies:
 
 ```bash
 npm i
 ```
-
-This should install all necessary dependencies for the tests.
 
 Edit .env in the base directory of the project and change the following lines to valid authentication credentials for https://hudl.com/login:
 
@@ -57,13 +55,13 @@ For example, to run Chrome Mobile Web, edit the appropriate environment variable
 env BROWSER="chrome" MOBILE_WEB="true" HEADLESS="false" npx mocha tests
 ```
 
-To run all five supported browser scenarios in sequence, test-runner.sh can be invoked:
+To run supported browser scenarios in sequence, test-runner.sh can be invoked:
 
 ```bash
 ./test-runner.sh
 ```
 
-Note on Safari - If you have not used it for automation previously, you might receive the following error:
+Note on Safari on MacOS - If you have not used it for automation previously, you might receive the following error:
 
 > SessionNotCreatedError: Could not create a session: You must enable the 'Allow Remote Automation' option in Safari's Develop menu to control Safari via WebDriver.
 
@@ -77,7 +75,7 @@ While the test suite should run on most recent versions of Node.js, it has been 
 - MacOS Big Sur 11.6.8, Node.js 17.0.1
 - Windows 10, Node.js 18.16.0
 
-See [package-lock.json](https://github.com/benson8/hudl-login-tests/blob/main/package-lock.json) for versions of items such as Chromedriver, which `npm i` should take care of installing automatically.
+See [package-lock.json](https://github.com/benson8/hudl-login-tests/blob/main/package-lock.json) for versions of items such as `ChromeDriver`, which `npm i` should take care of installing automatically.
 
 ## Test Suite Design Considerations and Best Practices
 
@@ -117,8 +115,8 @@ In no particular order, the following items should be considered for improving t
 - Convert project to Typescript.
 - Fix Safari element loading pause hack - See [the commentary in the code](https://github.com/benson8/hudl-login-tests/blob/main/pages/BasePage.js#L99) for further details, but it's likely more investigation could lead to a more elegant solution.
 - Move browser instantiation out of BasePage.js.
-- Move credentials to a secure solution such as [Vault](https://www.vaultproject.io/) or [Bitwarden](https://bitwarden.com/)
-- Move browser variables from [.env](https://github.com/benson8/hudl-login-tests/blob/main/.env) to a JSON configuration file
+- Move credentials to a secure solution such as [Vault](https://www.vaultproject.io/) or [Bitwarden](https://bitwarden.com/).
+- Move browser variables from [.env](https://github.com/benson8/hudl-login-tests/blob/main/.env) to a JSON configuration file.
 - Integrate with [Browserstack](https://www.browserstack.com/) or [Sauce Labs](https://saucelabs.com/) to gain additional device coverage (especially mobile Safari). There are of course real speed concerns with using this approach, so it would need to be a team decision of whether more coverage is desired that will take longer to run.
 - Move random email address and password generation to a separate utility class.
 - Add a test case for the Remember Me checkbox.
